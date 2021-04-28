@@ -5,7 +5,9 @@ An area to perform exploratory data science
 
 # Dev Tools
 dotnet cli
+
 vscode
+
 ionide extension for vscode
 
 # Running
