@@ -1,15 +1,14 @@
-fslab_data_analytics
+# fslab_data_analytics
 
-# Purpose
+## Purpose
 An area to perform exploratory data science
 
-# Dev Tools
-dotnet cli
+## Dev Tools
+- dotnet cli
+- vscode
+- ionide-fsharp extension for vscode
 
-vscode
-
-ionide extension for vscode
-
-# Running
-dotnet watch run <fs-file-or-root-of-project>
+## Running
+At the root of the project:
+> dotnet watch run .
 
