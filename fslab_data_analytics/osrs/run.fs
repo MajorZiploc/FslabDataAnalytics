@@ -2,23 +2,20 @@ module fslab_data_analytics.osrs
 
 open System
 open System.IO
+open System.Collections.Generic
 open FSharp.Stats
 open FSharp.Data
 open Deedle
 open Newtonsoft.Json
 
-type FileLocations = {
-    data: string
-}
-
 type Config = {
-    fileLocations: FileLocations
+    fileLocations: Dictionary<string,string>
 }
 
 let run argv =
     let configText = File.ReadAllText("fslab_data_analytics/osrs/config.json")
     let config = JsonConvert.DeserializeObject<Config>(configText)
-    printfn "%A" <| config.fileLocations.data
+    printfn "%A" <| config.fileLocations.["data"]
     let factorialOf3 = SpecialFunctions.Factorial.factorial 3
     // Retrieve data using the FSharp.Data package
     let rawData = Http.RequestString @"https://raw.githubusercontent.com/dotnet/machinelearning/master/test/data/housing.txt"
