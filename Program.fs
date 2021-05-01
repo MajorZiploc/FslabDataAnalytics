@@ -5,5 +5,5 @@ open System
 
 [<EntryPoint>]
 let main argv =
-    osrs.run ()
+    osrs.run () |> ignore
     0 // return an integer exit code

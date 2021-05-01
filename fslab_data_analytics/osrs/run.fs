@@ -13,8 +13,10 @@ type Config = {
 }
 
 let run argv =
-    let configText = File.ReadAllText("fslab_data_analytics/osrs/config.json")
+    let thisDir = utils.getCurrentDir "osrs"
+    let configText = File.ReadAllText(Path.Combine(thisDir, "config.json"))
     let config = JsonConvert.DeserializeObject<Config>(configText)
+    utils.setFullPaths (config.fileLocations) thisDir
     printfn "%A" <| config.fileLocations.["data"]
     let factorialOf3 = SpecialFunctions.Factorial.factorial 3
     // Retrieve data using the FSharp.Data package

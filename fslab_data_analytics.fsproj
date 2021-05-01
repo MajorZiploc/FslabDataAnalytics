@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="utils/index.fs" />
     <Compile Include="fslab_data_analytics/osrs/run.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
