@@ -12,9 +12,15 @@ type Config = {
     fileLocations: Dictionary<string,string>
 }
 
+let setFullPaths (fileLocations: Dictionary<string,string>) (dir: string) =
+    for entry in fileLocations do
+        fileLocations.[entry.Key] <- Path.Combine(dir, entry.Value)
+
 let run argv =
-    let configText = File.ReadAllText("fslab_data_analytics/osrs/config.json")
+    let thisDir = Path.Combine(Directory.GetCurrentDirectory(), "fslab_data_analytics", "osrs")
+    let configText = File.ReadAllText(Path.Combine(thisDir, "config.json"))
     let config = JsonConvert.DeserializeObject<Config>(configText)
+    setFullPaths (config.fileLocations) thisDir
     printfn "%A" <| config.fileLocations.["data"]
     let factorialOf3 = SpecialFunctions.Factorial.factorial 3
     // Retrieve data using the FSharp.Data package
