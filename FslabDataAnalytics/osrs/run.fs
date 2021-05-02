@@ -18,9 +18,14 @@ let run argv =
     let config = JsonConvert.DeserializeObject<Config>(configText)
     utils.setFullPaths (config.fileLocations) thisDir
     printfn "%A" <| config.fileLocations.["data"]
-    let df = Frame.ReadCsv(config.fileLocations.["data"],hasHeaders=true,separators="\t")
+    let df = Frame.ReadCsv(config.fileLocations.["data"],hasHeaders=true,separators=",")
+    ["web-scraper-order"; "web-scraper-start-url"; "char_link-href"]
+    |> List.iter (fun colName ->
+        df.DropColumn(colName)
+    )
     // df.Print()
 
+    printfn "The new frame does now contain: %i rows and %i columns" df.RowCount df.ColumnCount
     // Prints column names
     printfn "%A" <| df.Columns.Keys
 
