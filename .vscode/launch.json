@@ -9,7 +9,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/bin/Debug/net5.0/fslab_first.exe",
+      "program": "${workspaceFolder}/bin/Debug/net5.0/FsLabDataAnalytics.exe",
       "args": [],
       "cwd": "${workspaceFolder}",
       "stopAtEntry": false,
