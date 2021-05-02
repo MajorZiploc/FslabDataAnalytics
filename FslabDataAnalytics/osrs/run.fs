@@ -19,9 +19,16 @@ let run argv =
     utils.setFullPaths (config.fileLocations) thisDir
     printfn "%A" <| config.fileLocations.["data"]
     let df = Frame.ReadCsv(config.fileLocations.["data"],hasHeaders=true,separators=",")
+
     ["web-scraper-order"; "web-scraper-start-url"; "char_link-href"]
     |> List.iter df.DropColumn
-    // df.Print()
+    df.RenameColumn("char_link", "character")
+    let expCols =
+        df.Columns.Keys
+        |> Seq.filter (fun c -> c.EndsWith("_exp"))
+
+    let df = df |> Frame.sliceCols expCols
+    // exps = Enumerable(df.columns).where(lambda c: re.match('.*_exp',c,re.I)).to_list()
 
     printfn "The new frame does now contain: %i rows and %i columns" df.RowCount df.ColumnCount
     // Prints column names
