@@ -20,9 +20,7 @@ let run argv =
     printfn "%A" <| config.fileLocations.["data"]
     let df = Frame.ReadCsv(config.fileLocations.["data"],hasHeaders=true,separators=",")
     ["web-scraper-order"; "web-scraper-start-url"; "char_link-href"]
-    |> List.iter (fun colName ->
-        df.DropColumn(colName)
-    )
+    |> List.iter df.DropColumn
     // df.Print()
 
     printfn "The new frame does now contain: %i rows and %i columns" df.RowCount df.ColumnCount
