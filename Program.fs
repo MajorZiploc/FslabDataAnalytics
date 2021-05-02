@@ -1,6 +1,6 @@
 // Learn more about F# at http://docs.microsoft.com/dotnet/fsharp
 
-module fslab_data_analytics.App
+module FsLabDataAnalytics.App
 open System
 
 [<EntryPoint>]

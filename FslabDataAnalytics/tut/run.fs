@@ -1,4 +1,4 @@
-module fslab_data_analytics.tut
+module FsLabDataAnalytics.tut
 
 open System
 open System.IO
