@@ -1,4 +1,4 @@
-# FsLabDataAnalytics
+# FslabDataAnalytics
 
 ## Purpose
 An area to perform exploratory data science
