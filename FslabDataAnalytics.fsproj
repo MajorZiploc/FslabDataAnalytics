@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <Compile Include="utils/index.fs" />
-    <Compile Include="FsLabDataAnalytics/osrs/run.fs" />
+    <Compile Include="FslabDataAnalytics/osrs/run.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

@@ -1,4 +1,4 @@
-module FsLabDataAnalytics.osrs
+module FslabDataAnalytics.osrs
 
 open System
 open System.IO

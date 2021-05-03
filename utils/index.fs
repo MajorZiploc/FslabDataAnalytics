@@ -1,4 +1,4 @@
-module FsLabDataAnalytics.utils
+module FslabDataAnalytics.utils
 
 open System.IO
 open System.Collections.Generic
@@ -8,5 +8,5 @@ let setFullPaths (fileLocations: Dictionary<string,string>) (dir: string) =
     fileLocations.[entry.Key] <- Path.Combine(dir, entry.Value)
 
 let getCurrentDir (fileName: string) =
-  let thisDir = Path.Combine(Directory.GetCurrentDirectory(), "FsLabDataAnalytics", fileName)
+  let thisDir = Path.Combine(Directory.GetCurrentDirectory(), "FslabDataAnalytics", fileName)
   thisDir
