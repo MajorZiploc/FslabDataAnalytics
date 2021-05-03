@@ -12,3 +12,5 @@ An area to perform exploratory data science
 At the root of the project:
 > dotnet watch run .
 
+## TODO
+- Look into excel reading. Consider dotnet add package ExcelProvider --version 1.0.1 : https://fsprojects.github.io/ExcelProvider/sheets.html
