@@ -28,11 +28,20 @@ let run argv =
         |> Seq.filter (fun c -> c.EndsWith("_exp"))
 
     let df = df |> Frame.sliceCols expCols
-    // exps = Enumerable(df.columns).where(lambda c: re.match('.*_exp',c,re.I)).to_list()
+    // printfn "%O" df?attack_exp
 
     printfn "The new frame does now contain: %i rows and %i columns" df.RowCount df.ColumnCount
     // Prints column names
     printfn "%A" <| df.Columns.Keys
+    // let x = df?attack_exp |> Series.mapValues (fun i -> 1)
+    // df?NewCol <- x
+
+    let mdf = df |> Frame.melt
+
+    // let x = mdf.GetColumn "Column" |> Series.mapValues (fun i -> 1)
+    // mdf?NewCol <- x
+    // printfn "%A" mdf.Columns.Keys
+    mdf.Print()
 
     // let housesNotAtRiver = 
     //     df
