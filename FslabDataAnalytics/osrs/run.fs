@@ -7,6 +7,8 @@ open FSharp.Stats
 open FSharp.Data
 open Deedle
 open Newtonsoft.Json
+open System.Text.RegularExpressions
+open Acadian.FSharp
 
 type Config = {
     fileLocations: Dictionary<string,string>
@@ -26,6 +28,7 @@ let run argv =
     let expCols =
         df.Columns.Keys
         |> Seq.filter (fun c -> c.EndsWith("_exp"))
+        |> Seq.map String.trim
 
     let df = df |> Frame.sliceCols expCols
     // printfn "%O" df?attack_exp
@@ -41,6 +44,10 @@ let run argv =
     // let x = mdf.GetColumn "Column" |> Series.mapValues (fun i -> 1)
     // mdf?NewCol <- x
     // printfn "%A" mdf.Columns.Keys
+    mdf?Column <- mdf.GetColumn "Column"
+    |> Series.mapValues (fun skillExpName ->
+        Regex.Replace(skillExpName, "(.*)_exp$", "$1")
+    )
     mdf.Print()
 
     // let housesNotAtRiver = 
