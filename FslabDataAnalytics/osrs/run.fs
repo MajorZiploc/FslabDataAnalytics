@@ -4,6 +4,7 @@ open System
 open System.IO
 open System.Collections.Generic
 open FSharp.Stats
+open Plotly.NET
 open FSharp.Data
 open Deedle
 open Newtonsoft.Json
@@ -49,6 +50,9 @@ let run argv =
         Regex.Replace(skillExpName, "(.*)_exp$", "$1")
     )
     mdf.Print()
+    // Chart.Combine
+    //   [ Chart.Line(msft?Difference |> Series.observations) 
+    //     Chart.Line(fb?Difference |> Series.observations) ]
 
     // let housesNotAtRiver = 
     //     df
