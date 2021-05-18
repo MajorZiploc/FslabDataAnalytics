@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -12,11 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Acadian.FSharp" Version="1.2.9" />
     <PackageReference Include="Deedle" Version="2.3.0" />
     <PackageReference Include="FSharp.Data" Version="4.1.1" />
     <PackageReference Include="FSharp.Stats" Version="0.4.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Plotly.NET" Version="2.0.0-beta8" />
+    <PackageReference Include="Plotly.NET" Version="2.0.0-beta9" />
   </ItemGroup>
 
 </Project>

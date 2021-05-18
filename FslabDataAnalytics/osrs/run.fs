@@ -4,9 +4,12 @@ open System
 open System.IO
 open System.Collections.Generic
 open FSharp.Stats
+open Plotly.NET
 open FSharp.Data
 open Deedle
 open Newtonsoft.Json
+open System.Text.RegularExpressions
+open Acadian.FSharp
 
 type Config = {
     fileLocations: Dictionary<string,string>
@@ -26,13 +29,30 @@ let run argv =
     let expCols =
         df.Columns.Keys
         |> Seq.filter (fun c -> c.EndsWith("_exp"))
+        |> Seq.map String.trim
 
     let df = df |> Frame.sliceCols expCols
-    // exps = Enumerable(df.columns).where(lambda c: re.match('.*_exp',c,re.I)).to_list()
+    // printfn "%O" df?attack_exp
 
     printfn "The new frame does now contain: %i rows and %i columns" df.RowCount df.ColumnCount
     // Prints column names
     printfn "%A" <| df.Columns.Keys
+    // let x = df?attack_exp |> Series.mapValues (fun i -> 1)
+    // df?NewCol <- x
+
+    let mdf = df |> Frame.melt
+
+    // let x = mdf.GetColumn "Column" |> Series.mapValues (fun i -> 1)
+    // mdf?NewCol <- x
+    // printfn "%A" mdf.Columns.Keys
+    mdf?Column <- mdf.GetColumn "Column"
+    |> Series.mapValues (fun skillExpName ->
+        Regex.Replace(skillExpName, "(.*)_exp$", "$1")
+    )
+    mdf.Print()
+    // Chart.Combine
+    //   [ Chart.Line(msft?Difference |> Series.observations) 
+    //     Chart.Line(fb?Difference |> Series.observations) ]
 
     // let housesNotAtRiver = 
     //     df
